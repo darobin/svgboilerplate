@@ -1,6 +1,6 @@
 // XXX
 // - we could simplify a bit if we assumed jQuery
-(function (doc) {
+(function (doc, win) {
     function ancestorNames (el) {
         var res = [];
         while (el.parentNode && el.parentNode.nodeType === 1) {
@@ -14,6 +14,7 @@
         if (opt.src) scr.src = opt.src;
         if (opt.text) scr.textContent = opt.text;
         if (opt.async) scr.async = opt.async;
+        if (opt.onload) scr.onload = opt.onload;
         doc.getElementsByTagName("body")[0].appendChild(scr);
     }
     function hasHTML5Parser () {
@@ -23,9 +24,10 @@
     }
 
     if (Modernizr.svg) {
-        alert("I'm supporting SVG, and HTML5 parsing is: " + hasHTML5Parser());
         // check that we have a proper parser
-        if (!hasHTML5Parser()) addScript({ src: "js/force-svg.js" });
+        if (!hasHTML5Parser()) {
+            addScript({ src: "js/force-svg.js", onload: function () { win.ForceSVG.forceAllSVG(doc); } });
+        };
         // bring in FakeSMIL
         if (!Modernizr.smil) addScript({ src: "js/smil.user.js" });
     }
@@ -47,4 +49,4 @@
         // bring in SVGWeb here (XXX not sure this works!)
         addScript({ src: "svg.js" });
     }
-})(document);
+})(document, window);
