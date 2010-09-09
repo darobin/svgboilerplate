@@ -1,0 +1,8 @@
+# Adding the SVG media type and encoding in case they aren't already
+AddType     image/svg+xml             svg svgz 
+AddEncoding gzip                      svgz
+AddCharset  utf-8 .svg
+
+# these are needed for SVG Web
+AddType     application/x-shockwave-flash  	swf
+AddType     text/x-component                htc
