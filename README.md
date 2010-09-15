@@ -1,5 +1,10 @@
 #  SVG Boilerplate [http://svgboilerplate.com](http://svgboilerplate.com)
 
+## WARNING:
+
+This is a very early, alpha, untested version. It has all sorts of horrible flaws and will probably
+catch fire if you pet it wrong. Don't feed the <tspan> elements.
+
 ## License:
 
 External components:

@@ -9,21 +9,23 @@
   <body>
     <!-- 
       XXX TODO
-      - use modernizr
-      - if SVG is not supported, bring in SVGWeb
-      - if using SVGWeb, put the SVG inside a <script>
-      - if not using SVGWeb, and HTML5 parsing is not activated, bring in ForceSVG
-      - if not SVGWeb, and no support for SMIL, bring in FakeSMIL
+      X use modernizr
+      X if SVG is not supported, bring in SVGWeb
+      X if using SVGWeb, put the SVG inside a <script>
+      X if not using SVGWeb, and HTML5 parsing is not activated, bring in ForceSVG
+      X if not SVGWeb, and no support for SMIL, bring in FakeSMIL
       - minimise the code that isn't
+      - test on many browsers, multiple setups
       
       FROM HTML5BOILERPLATE
-      - .htaccess
+      X .htaccess
       - explain that we don't copy everything, people can integrate
       - sexy style
       - use the SVG logo instead or alongside the star
       - include explanation
     -->
     <!-- 
+      Use this to inline SVG in your HTML
       XXX 
       - explain the values
       - explain the limitations on prefixes and self-closing tags
@@ -33,6 +35,15 @@
          <!-- put some content in here -->
          <rect x='0' y='0' width='100' height='100' fill='red'></rect>
     </svg>
+    <!-- 
+      Use this to embed external SVG
+    -->
+    <!--[if lt IE 9]>
+    <object src='path/to/your.svg' classid='image/svg+xml' width='750' height='300'></object>
+    <![endif]-->
+    <!--[if gte IE 9]>-->
+    <object data='path/to/your.svg' type='image/svg+xml' width='750' height='300'></object>
+    <!--<![endif]-->
     
     <script src='js/shimvg.js'></script>
   </body>
