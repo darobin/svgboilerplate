@@ -5,6 +5,9 @@
 This is a very early, alpha, untested version. It has all sorts of horrible flaws and will probably
 catch fire if you pet it wrong. Don't feed the <tspan> elements.
 
+This is work in progress, it probably doesn't do all that it says on the tin. It hasn't been tested
+with all the relevant platforms.
+
 ## License:
 
 External components:

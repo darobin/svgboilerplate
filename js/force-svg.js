@@ -28,6 +28,7 @@
 
         fixAttributes:  {
             attributeType:        ['animate','set','animateMotion','animateColor','animateTransform'],
+            attributeName:        ['animate','set','animateMotion','animateColor','animateTransform'],
             baseFrequency:        ['feTurbulence'],
             baseProfile:          ['svg'],
             calcMode:             ['animateMotion'],
@@ -98,10 +99,11 @@
         optFixAttr: {},
         optFixed:   false,
 
-        forceAllSVG:    function (doc) {
+        forceAllSVG:    function (doc, cb) {
             if (!doc) doc = document;
             var svgs = doc.getElementsByTagName("svg");
             for (var i = 0; i < svgs.length; i++) this.forceSVG(svgs[i]);
+            if (cb) cb();
         },
 
         forceSVG:       function (svg) {
@@ -115,7 +117,8 @@
             div.appendChild(clone);
             var dom = (new DOMParser()).parseFromString(div.innerHTML, "application/xml"); // image/svg+xml would be nicer
             this.fixCase(dom);
-            svg.parentNode.replaceChild(document.importNode(dom.documentElement, true), svg);
+            var newSVG = document.importNode(dom.documentElement, true);
+            svg.parentNode.replaceChild(newSVG, svg);
         },
 
         // XXX completely untested
