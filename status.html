@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+  <head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+    <title>SVG Boilerplate Test Status</title>
+    <style type='text/css'>
+      .n_a { background: #000; color: #ccc; }
+      .nok { background: #f00; }
+      .ukn { background: #ccc; }
+      .nat, .ani, .hp5, .all, .swf { background: #0f0; }
+      .ua { text-align:  left;}
+    </style>
+  </head>
+  <body>
+    <h1>SVG Boilerplate Test Status</h1>
+    <p>
+      The reading key is:
+    </p>
+    <ul>
+      <li><strong>n/a</strong> - not applicable</li>
+      <li><strong>nok</strong> - failed</li>
+      <li><strong>nat</strong> - full native</li>
+      <li><strong>ani</strong> - anims shimmed (+fakesmil)</li>
+      <li><strong>hp5</strong> - html5 parsing shimmed (+forcesvg)</li>
+      <li><strong>all</strong> - both anims and html5 parsing shimmed</li>
+      <li><strong>swf</strong> - SVG Web</li>
+      <li><strong>ukn</strong> - untested</li>
+    </ul>
+    
+    <table id='results'>
+      <tr>
+        <th rowspan='2'>Browsers</th>
+        <th colspan='2'>HTML</th>
+        <th colspan='2'>XHTML</th>
+      </tr>
+      <tr>
+        <th>Inline</th>
+        <th>Embed</th>
+        <th>Inline</th>
+        <th>Embed</th>
+      </tr>
+    </table>
+    <script>
+      // key
+      var data = [
+          { ua: "FF3/osx", hi: "all", he: "all", xi: "ani", xe: "ani" },
+          { ua: "FF3/win", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "FF3/lin", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "FF2/osx", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "FF2/win", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "FF2/lin", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "SF5/osx", hi: "all", he: "all", xi: "nat", xe: "nat" },
+          { ua: "SF5/win", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "SF4/osx", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "SF4/win", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "SF4/ios", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "CH7/osx", hi: "nat", he: "nat", xi: "nat", xe: "nat" },
+          { ua: "CH7/win", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "CH7/lin", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "CH6/osx", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "CH6/win", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "CH6/lin", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "CH5/osx", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "CH5/win", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "CH5/lin", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "O10/osx", hi: "all", he: "all", xi: "nok", xe: "hp5" },
+          { ua: "O10/win", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "O10/lin", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "O09/osx", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "O09/win", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "O09/lin", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "IE9/win", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "IE8/win", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "IE7/win", hi: "ukn", he: "ukn", xi: "ukn", xe: "ukn" },
+          { ua: "IE6/win", hi: "ukn", he: "ukn", xi: "n/a", xe: "n/a" },
+      ];
+      var tab = document.getElementById("results"),
+          opt = ["hi", "he", "xi", "xe"];
+      for (var i = 0, n = data.length; i < n; i++) {
+          var item = data[i];
+          var tr = document.createElement("tr");
+          var th = document.createElement("th");
+          th.className = "ua"
+          th.innerHTML = item.ua;
+          tr.appendChild(th);
+          for (var j = 0, m = opt.length; j < m; j++) {
+              var variant = opt[j];
+              var td = document.createElement("td");
+              var res = item[variant]
+              td.innerHTML = res;
+              if (res === "n/a") res = "n_a";
+              td.className = res;
+              tr.appendChild(td);
+          }
+          tab.appendChild(tr);
+      }
+    </script>
+  </body>
+</html>

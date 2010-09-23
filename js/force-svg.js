@@ -192,4 +192,6 @@
             }
         }
     };
+    // immediate trigger
+    win.ForceSVG.forceAllSVG();
 })(window);

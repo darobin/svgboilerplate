@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+  <head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+    <title>SVG Boilerplate Test Page</title>
+    <script src="js/modernizr-1.5.min.js"></script>
+  </head>
+  <body>
+    <!-- 
+      XXX TODO
+    -->
+    <h1>SVG Boilerplate Test Page</h1>
+    <section>
+      <h2>Debug</h2>
+      <p>
+        The mode being used is: <strong id='mode'>UNKNOWN</strong>.
+      </p>
+      <pre id='dump'></pre>
+    </section>
+    
+    <section>
+      <h2>Inline</h2>
+      <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'
+           width='200' height='200' viewPort='0 0 200 200'>
+        <rect x='50' y='50' width='100' height='100' fill='red'>
+          <set attributeName='fill' attributeType='CSS' to='green'></set>
+          <animateTransform attributeName='transform' attributeType='XML'
+                            type='rotate' from='0 100,100' to='360 100,100' dur='3s' repeatCount='indefinite'></animateTransform>
+        </rect>
+      </svg>
+    </section>
+
+    <section>
+      <h2>Embedded</h2>
+      <!--[if lt IE 9]>
+      <object src='test.svg' classid='image/svg+xml' width='200' height='200'></object>
+      <![endif]-->
+      <!--[if gte IE 9]>-->
+      <object data='test.svg' type='image/svg+xml' width='200' height='200'></object>
+      <!--<![endif]-->
+    </section>
+    
+    <script src='js/shimvg.js' data-debug='true'></script>
+    <script>
+      document.getElementById("mode").innerHTML = ShimSVGDebug.mode;
+    </script>
+  </body>
+</html>

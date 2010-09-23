@@ -1,4 +1,6 @@
 /*
+This is a locally modified version of FakeSMIL, will be rolled back later
+
 @id {7eeff186-cfb4-f7c3-21f2-a15f210dca49}
 @name FakeSmile
 @version 0.1.35
@@ -43,11 +45,12 @@ var timeZero;
  * if declarative animations are not supported,
  * the document animations are fetched and registered
  */
-function initSMIL() {
+function initSMIL(force) {
+    force = force || false;
   if (document.documentElement.getAttribute("smiling")=="fake")
     return;
   document.documentElement.setAttribute("smiling", "fake");
-  smile(document);
+  smile(document, force);
 
   timeZero = new Date();
   // I schedule them (after having instanciating them, for sync-based events)
@@ -69,7 +72,8 @@ function xhrCallback() {
     smile(this.responseXML);
 }
 
-function smile(animating) {
+function smile(animating, force) {
+    force = force || false;
   var request = window.XMLHttpRequest ? new XMLHttpRequest() : window.ActiveXObject ? new ActiveXObject("MSXML2.XMLHTTP.3.0") : null;
   if(request) {
     if(request.overrideMimeType)
@@ -96,7 +100,7 @@ function smile(animating) {
       continue;
     }
     var impl = document.implementation;
-    if ((namespaceURI==svgns && !impl.hasFeature("http://www.w3.org/TR/SVG11/feature#SVG-animation", "1.1")) ||
+    if ((namespaceURI==svgns && (force || !impl.hasFeature("http://www.w3.org/TR/SVG11/feature#SVG-animation", "1.1"))) ||
         (namespaceURI==smilanimns && !impl.hasFeature(smilanimns, "1.1")) ||
         (namespaceURI==smil2ns && !impl.hasFeature(smil2ns, "2.0")) ||
         (namespaceURI==smil21ns && !impl.hasFeature(smil21ns, "2.1")) ||
