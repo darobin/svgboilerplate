@@ -30,9 +30,15 @@
         else                                targetDoc.getElementsByTagName("body")[0].appendChild(scr);
         return scr;
     }
+    function isXHTML () {
+        var root = doc.documentElement;
+        return root.namespaceURI === "http://www.w3.org/1999/xhtml" &&
+               root.localName === "html" &&
+               root. tagName === "html";
+    }
     function hasHTML5Parser () {
         var div = doc.createElement("div");
-        div.innerHTML = "<svg><rect/><circle/></svg>";
+        div.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg'><rect/><circle/></svg>";
         return div.childNodes.length === 1 && div.firstChild.childNodes.length === 2;
     }
     
@@ -57,8 +63,9 @@
     if (Modernizr.svg) {
         if (debug) win.ShimSVGDebug.nativeSVG = true;
         // check that we have a proper parser
-        var html5Parser = hasHTML5Parser();
-        if (!html5Parser) {
+        var html5Parser = hasHTML5Parser(),
+            xhtml = isXHTML();
+        if (!html5Parser && !xhtml) {
             if (debug) win.ShimSVGDebug.nativeHTML5 = false;
             // addScript({ src: base + "force-svg.js", onload: function () {
             //     win.ForceSVG.forceAllSVG(doc, function () {
@@ -137,5 +144,6 @@
             mode = "svgweb";
         }
         win.ShimSVGDebug.mode = mode;
+        win.ShimSVGDebug.xhtml = xhtml;
     }
 })(document, window);

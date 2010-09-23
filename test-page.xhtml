@@ -13,7 +13,7 @@
     <section>
       <h2>Debug</h2>
       <p>
-        The mode being used is: <strong id='mode'>UNKNOWN</strong>.
+        The mode being used is: <strong id='mode'>UNKNOWN</strong> (<em id='xh'></em>).
       </p>
       <pre id='dump'></pre>
     </section>
@@ -43,6 +43,7 @@
     <script src='js/shimvg.js' data-debug='true'></script>
     <script>
       document.getElementById("mode").innerHTML = ShimSVGDebug.mode;
+      document.getElementById("xh").innerHTML = ShimSVGDebug.xhtml ? "xhtml" : "html";
     </script>
   </body>
 </html>
