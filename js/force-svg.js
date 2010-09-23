@@ -104,6 +104,7 @@
             var svgs = doc.getElementsByTagName("svg");
             for (var i = 0; i < svgs.length; i++) this.forceSVG(svgs[i]);
             if (cb) cb();
+            if (win.onsvgload) win.onsvgload();
         },
 
         forceSVG:       function (svg) {
