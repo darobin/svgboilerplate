@@ -1,3 +1,5 @@
+Given the state of SVG support today, this is absolutely not needed anymore. This repo is here only for historical purposes.
+
 #  SVG Boilerplate [http://svgboilerplate.com](http://svgboilerplate.com)
 
 ## WARNING:
