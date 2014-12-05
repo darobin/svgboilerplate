@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+		 height="100%"
+     width="100%"
+		 viewBox="0 0 100 100"
+     overflow="hidden"
+		 preserveAspectRatio="xMidYMid meet"
+		 xml:space="preserve"
+		 style="background-color:#999999;"
+		>
+
+	 <!-- ADD THIS SWITCH TO SVG FILES TO ADD SUPPORT FOR DECLARATIVE SMIL -->
+   <!-- ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ?  -->
+   <switch>
+      <g requiredFeatures='http://www.w3.org/TR/SVG11/feature#SVG-animation' />
+      <g>
+         <script type='text/ecmascript' xlink:href='js/smil.user.js' />
+      </g>
+   </switch>
+	 <!-- ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ?  -->
+   <!-- ... TO HERE -->
+	 
+	<title>Loading Animation - 01</title>
+	<defs>
+		<radialGradient id="radGrad01">
+			<stop offset="1%" style="stop-color:blue;">
+				<animate attributeName="offset" from="0%" to="80%" dur="10s" begin="5"
+					repeatCount="indefinite"/>
+			</stop>
+			<stop offset="5%" style="stop-color:white;">
+			<animate attributeName="offset" from="5%" to="93%" dur="10s" begin="5"
+					repeatCount="indefinite"/>
+			</stop>
+			<stop offset="95%" style="stop-color:lightgray;"/>
+		</radialGradient>
+		<!-- the circle element with CSS styling and animations -->
+		<circle id="circleA" r="10" cx="0" cy="0" stroke-dasharray="5,15" style="fill:url(#radGrad01);stroke:orange;stroke-width:0.8px;">
+		</circle>
+	</defs>
+	
+	<rect x='50' y='50' width='100' height='100' fill='red'>
+    <set attributeName='fill' attributeType='CSS' to='green' begin='0s'></set>
+    <animateTransform attributeName='transform' attributeType='XML'
+                      type='rotate' from='0 100,100' to='360 100,100' dur='3s' repeatCount='indefinite'></animateTransform>
+  </rect>
+	
+	<g id="gLoadingAnimation">
+		<g id="gCircles">
+			<g id="gCircle">
+				<use xlink:href="#circleA" x="50" y="25" fill="orange" stroke="red">
+					<!--<animate attributeName="stroke-dasharray" from="5,15" to="1,3" dur="15s" begin="10s" fill="freeze" repeatCount="1"/>-->
+				</use>
+			</g>
+			
+			<!-- now just rotated the circles around a center point -->
+			<!--<use xlink:href="#gCircle" style="stroke-opacity:0;"
+			transform="rotate(60 50 50)"/>-->
+			<use xlink:href="#gCircle" style="fill-opacity:0.4;"
+			transform="rotate(120 50 50)"/>
+			<!--<use xlink:href="#gCircle" style="stroke-opacity:0.4;"
+			transform="rotate(180 50 50)"/>-->
+			<use xlink:href="#gCircle" style="fill-opacity:0.8;"
+			transform="rotate(240 50 50)">
+				<!--<animateTransform attributeName="transform" attributeType='XML' type="rotate" from="0,0,0" to="360,0,0" dur="10s" begin="5s" fill="freeze" repeatCount="2" />-->
+			</use>
+			<!--<use xlink:href="#gCircle" style="stroke-opacity:8;"
+			transform="rotate(300 50 50)"/>-->
+		</g>
+		
+		<!-- now animate the rotation of the group of circles -->
+		<animateTransform attributeName="transform" attributeType='XML' type="rotate"
+			from="0,50,50" to="360,50,50" dur="10s" begin="0s" fill="freeze" repeatCount="2" />
+	</g>
+	
+</svg>
